@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cart',
     'products',
-    'orders'
+    'orders',
+    'error_sample',
 ]
 
 MIDDLEWARE = [
@@ -159,8 +162,7 @@ LOGGING = {
 }
 
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
+
 
 sentry_sdk.init(
     dsn="https://aa6aec3828cc1cb076c5020f992f0e35@o4510330764132352.ingest.de.sentry.io/4510330766426192",  
